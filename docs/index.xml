@@ -1,0 +1,13 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>task.media Blog</title>
+    <link>https://blog.task.media/</link>
+    <description>Recent content on task.media Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-DE</language>
+    
+        <atom:link href="https://blog.task.media/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>
