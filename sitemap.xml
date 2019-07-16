@@ -3,17 +3,54 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://blog.task.media/categories/</loc>
+    <loc>https://blog.task.media/article/</loc>
+    <lastmod>2019-07-16T18:53:55+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.task.media/author/</loc>
+    <lastmod>2019-07-16T18:53:55+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.task.media/author/marco/</loc>
+    <lastmod>2019-07-16T18:53:55+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.task.media/tags/</loc>
+    <lastmod>2019-07-16T18:53:55+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.task.media/article/welcome-back/</loc>
+    <lastmod>2019-07-16T18:53:55+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.task.media/tags/tag/</loc>
+    <lastmod>2019-07-16T18:53:55+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.task.media/</loc>
+    <lastmod>2019-07-16T18:53:55+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.task.media/tags/test/</loc>
+    <lastmod>2019-07-16T18:53:55+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.task.media/categories/</loc>
     <priority>0</priority>
   </url>
   

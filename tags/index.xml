@@ -6,9 +6,28 @@
     <description>Recent content in Tags on task.media Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>de-DE</language>
+    <lastBuildDate>Tue, 16 Jul 2019 18:53:55 +0200</lastBuildDate>
     
 	<atom:link href="https://blog.task.media/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>tag</title>
+      <link>https://blog.task.media/tags/tag/</link>
+      <pubDate>Tue, 16 Jul 2019 18:53:55 +0200</pubDate>
+      
+      <guid>https://blog.task.media/tags/tag/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>test</title>
+      <link>https://blog.task.media/tags/test/</link>
+      <pubDate>Tue, 16 Jul 2019 18:53:55 +0200</pubDate>
+      
+      <guid>https://blog.task.media/tags/test/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
