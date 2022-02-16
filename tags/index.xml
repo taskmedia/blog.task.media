@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on task.media Blog</title>
@@ -6,17 +6,94 @@
     <description>Recent content in Tags on task.media Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>de-DE</language>
-    <lastBuildDate>Tue, 16 Jul 2019 18:53:55 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 16 Feb 2022 12:00:00 +0100</lastBuildDate><atom:link href="https://blog.task.media/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>dashboard</title>
+      <link>https://blog.task.media/tags/dashboard/</link>
+      <pubDate>Wed, 16 Feb 2022 12:00:00 +0100</pubDate>
+      
+      <guid>https://blog.task.media/tags/dashboard/</guid>
+      <description></description>
+    </item>
     
-	<atom:link href="https://blog.task.media/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ingress</title>
+      <link>https://blog.task.media/tags/ingress/</link>
+      <pubDate>Wed, 16 Feb 2022 12:00:00 +0100</pubDate>
+      
+      <guid>https://blog.task.media/tags/ingress/</guid>
+      <description></description>
+    </item>
     
+    <item>
+      <title>ingressroute</title>
+      <link>https://blog.task.media/tags/ingressroute/</link>
+      <pubDate>Wed, 16 Feb 2022 12:00:00 +0100</pubDate>
+      
+      <guid>https://blog.task.media/tags/ingressroute/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>itarchiv</title>
       <link>https://blog.task.media/tags/itarchiv/</link>
-      <pubDate>Tue, 16 Jul 2019 18:53:55 +0200</pubDate>
+      <pubDate>Wed, 16 Feb 2022 12:00:00 +0100</pubDate>
       
       <guid>https://blog.task.media/tags/itarchiv/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>k3s</title>
+      <link>https://blog.task.media/tags/k3s/</link>
+      <pubDate>Wed, 16 Feb 2022 12:00:00 +0100</pubDate>
+      
+      <guid>https://blog.task.media/tags/k3s/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>k8s</title>
+      <link>https://blog.task.media/tags/k8s/</link>
+      <pubDate>Wed, 16 Feb 2022 12:00:00 +0100</pubDate>
+      
+      <guid>https://blog.task.media/tags/k8s/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes</title>
+      <link>https://blog.task.media/tags/kubernetes/</link>
+      <pubDate>Wed, 16 Feb 2022 12:00:00 +0100</pubDate>
+      
+      <guid>https://blog.task.media/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>proxy</title>
+      <link>https://blog.task.media/tags/proxy/</link>
+      <pubDate>Wed, 16 Feb 2022 12:00:00 +0100</pubDate>
+      
+      <guid>https://blog.task.media/tags/proxy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>reverseproxy</title>
+      <link>https://blog.task.media/tags/reverseproxy/</link>
+      <pubDate>Wed, 16 Feb 2022 12:00:00 +0100</pubDate>
+      
+      <guid>https://blog.task.media/tags/reverseproxy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>traefik</title>
+      <link>https://blog.task.media/tags/traefik/</link>
+      <pubDate>Wed, 16 Feb 2022 12:00:00 +0100</pubDate>
+      
+      <guid>https://blog.task.media/tags/traefik/</guid>
       <description></description>
     </item>
     

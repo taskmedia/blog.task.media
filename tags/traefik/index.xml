@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>traefik on task.media Blog</title>
+    <link>https://blog.task.media/tags/traefik/</link>
+    <description>Recent content in traefik on task.media Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-DE</language>
+    <lastBuildDate>Wed, 16 Feb 2022 12:00:00 +0100</lastBuildDate><atom:link href="https://blog.task.media/tags/traefik/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Setup k3s with LetsEncrypt and Traefik dashboard exposed</title>
+      <link>https://blog.task.media/article/k3s/k3s-letsencrypt-traefik/</link>
+      <pubDate>Wed, 16 Feb 2022 12:00:00 +0100</pubDate>
+      
+      <guid>https://blog.task.media/article/k3s/k3s-letsencrypt-traefik/</guid>
+      <description>About This article describes how to expose a Kubernetes instance running with k3s with TLS certificates from Let’s Encrypt.
+The K3s installation will install a Traefik ingress on its default configuration. But it will not have a certificate resolver present and uses the Traefik default certificate.
+Versions K3s: v1.22.6+k3s1 (3228d9cb) K8s-Client: 1.23.3 K8s-Server: 1.22.6+k3s1 Traefik: 2.6.1 Traefik Helmchart: 10.9.100
+Installation k3s The installation of k3s is quite simple. We are following the installation guide of k3s documentation on rancher.</description>
+    </item>
+    
+  </channel>
+</rss>
