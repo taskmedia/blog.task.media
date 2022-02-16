@@ -1,43 +1,58 @@
+
+  
 <!doctype html>
 <html class="no-js" lang="de">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="author" content="Marco">
-        <meta name="description" content="Blog über IT-Themen aus dem Alltag und Vorlesungen.">
-        <meta name="keywords" content="blog,it,taskmedia,task.media,it-archiv,itarchiv">
-        <meta name="generator" content="Hugo 0.92.1" />
-        <title> Setup k3s with LetsEncrypt and Traefik dashboard exposed | task.media Blog</title>
-        <meta name="description" content="Setup k3s with LetsEncrypt and Traefik dashboard exposed - Blog über IT-Themen aus dem Alltag und Vorlesungen.">
-        <meta itemprop="name" content="Setup k3s with LetsEncrypt and Traefik dashboard exposed">
-        <meta itemprop="description" content="Setup k3s with LetsEncrypt and Traefik dashboard exposed - Blog über IT-Themen aus dem Alltag und Vorlesungen.">
-        <meta property="og:title" content="Setup k3s with LetsEncrypt and Traefik dashboard exposed">
-        <meta property="og:description" content="Setup k3s with LetsEncrypt and Traefik dashboard exposed - Blog über IT-Themen aus dem Alltag und Vorlesungen.">
-        <meta property="og:image" content="https://www.gravatar.com/avatar/73d3dcc1a6538a364a5112d218ad4f43?size=200">
-        <meta property="og:url" content="https://blog.task.media/article/k3s/k3s-letsencrypt-traefik/">
-        <meta property="og:site_name" content="task.media Blog">
-        <meta property="og:type" content="article">
-        <link rel="icon" type="image/png" href="https://blog.task.media/favicon-32x32.png" sizes="32x32">
-        <link rel="icon" type="image/png" href="https://blog.task.media/favicon-16x16.png" sizes="16x16">
 
-	
-	  <link href="/article/k3s/k3s-letsencrypt-traefik/" rel="alternate" type="application/rss+xml" title="task.media Blog" />
-	  <link href="/article/k3s/k3s-letsencrypt-traefik/" rel="feed" type="application/rss+xml" title="task.media Blog" />
-	
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="siteBaseUrl" content="https://blog.task.media/">
+    <meta name="author" content="Marco">
+    <meta name="description" content="Blog über IT-Themen aus dem Alltag und Vorlesungen.">
+    <meta name="keywords" content="blog,it,taskmedia,task.media,it-archiv,itarchiv">
+    <meta name="generator" content="Hugo 0.92.1" />
+    <title>
+        
+           
+               Setup k3s with LetsEncrypt and Traefik dashboard exposed &vert; task.media Blog
+           
+        
+    </title>
+    <meta name="description" content="Setup k3s with LetsEncrypt and Traefik dashboard exposed - Blog über IT-Themen aus dem Alltag und Vorlesungen.">
+    <meta itemprop="name" content="Setup k3s with LetsEncrypt and Traefik dashboard exposed">
+    <meta itemprop="description" content="Setup k3s with LetsEncrypt and Traefik dashboard exposed - Blog über IT-Themen aus dem Alltag und Vorlesungen.">
+    <meta property="og:title" content="Setup k3s with LetsEncrypt and Traefik dashboard exposed">
+    <meta property="og:description" content="Setup k3s with LetsEncrypt and Traefik dashboard exposed - Blog über IT-Themen aus dem Alltag und Vorlesungen.">
+    <meta property="og:image" content="https://www.gravatar.com/avatar/73d3dcc1a6538a364a5112d218ad4f43?size=200">
+    <meta property="og:url" content="https://blog.task.media/article/k3s/k3s-letsencrypt-traefik/">
+    <meta property="og:site_name" content="task.media Blog">
+    <meta property="og:type" content="article">
 
-        
-        
-        
-        
-        <link rel="stylesheet" href="/sass/combined.min.5f50be91a665634f9dfed5900bc388393fc430e3369d58e73b8375457a6df832.css">
+    
 
-        
 
-        
-    </head>
-    <body class="bilberry-hugo-theme">
-        
-<nav>
+    <script src="/modernizr-simple.js"></script>
+
+    
+    <link href="/article/k3s/k3s-letsencrypt-traefik/" rel="alternate" type="application/rss+xml" title="task.media Blog" />
+    <link href="/article/k3s/k3s-letsencrypt-traefik/" rel="feed" type="application/rss+xml" title="task.media Blog" />
+    
+
+    
+    <link rel="canonical" href="https://blog.task.media/article/k3s/k3s-letsencrypt-traefik/">
+    
+
+    <link rel="stylesheet" href="https://blog.task.media/theme.css">
+
+    
+
+    
+</head>
+
+<body class="bilberry-hugo-theme">
+
+    
+    <nav>
 
     <div class="container">
         <ul class="topnav">
@@ -49,47 +64,63 @@
 </nav>
 
 
-        <header>
+    
+    <header>
+
     <div class="container">
         <div class="logo">
             <a href="/" class="logo">
                 
-                    <img src="https://www.gravatar.com/avatar/73d3dcc1a6538a364a5112d218ad4f43?d=mm&size=200" alt="">
+                    
+                    
+                        
+                    
+                    <img src="https://seccdn.libravatar.org/avatar/73d3dcc1a6538a364a5112d218ad4f43?d=mm&size=200" alt="">
                 
 
                 <span class="overlay"><i class="fa fa-home"></i></span>
             </a>
         </div>
         <div class="titles">
-            <h3 class="title"><a href="/">task.media Blog</a></h3>
+            <h3 class="title">
+                <a href="/">
+                    task.media Blog
+                </a>
+            </h3>
+
             
         </div>
 
-    
+        
 
         
-        <div class="toggler">
+            <div class="toggler">
         
-            <i class="fa fa-bars" aria-hidden="true"></i>
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </div>
         </div>
     </div>
 </header>
 
 
-        <div class="main container">
-            
-     
+    <div class="main container">
+        
     <div class="article-wrapper u-cf single">
         
             <a class="bubble" href="https://blog.task.media/article/k3s/k3s-letsencrypt-traefik/">
-    <i class="fa fa-fw fa-sticky-note"></i>
+    <i class="fas fa-fw fa-sticky-note"></i>
 </a>
 
 <article class="default article">
     
 
     <div class="content">
-    <h3><a href="https://blog.task.media/article/k3s/k3s-letsencrypt-traefik/">Setup k3s with LetsEncrypt and Traefik dashboard exposed</a></h3>
+    <h1 class="article-title">
+        <a href="https://blog.task.media/article/k3s/k3s-letsencrypt-traefik/">
+            Setup k3s with LetsEncrypt and Traefik dashboard exposed
+        </a>
+    </h1>
+
     <div class="meta">
         
             
@@ -98,27 +129,38 @@
         
 
         
-            <span class="readingTime">4 Min. lesen</span>
+            
+                <span class="readingTime">4 Min. lesen</span>
+            
         
 
         
 
         
-            <span class="author"><a href="/author/marco">Marco</a></span>
+            <span class="author">
+                
+                
+                    <a href="https://blog.task.media/author/marco/">Marco</a>
+                
+            </span>
         
     </div>
 
     
+        
+
         <h1 id="about">About</h1>
 <p>This article describes how to expose a Kubernetes instance running with <a href="https://k3s.io/">k3s</a> with TLS certificates from <a href="https://letsencrypt.org/">Let’s Encrypt</a>.</p>
 <p>The K3s installation will install a Traefik ingress on its default configuration.
 But it will not have a certificate resolver present and uses the Traefik default certificate.</p>
 <h1 id="versions">Versions</h1>
-<p>K3s: <code>v1.22.6+k3s1 (3228d9cb)</code>
-K8s-Client: <code>1.23.3</code>
-K8s-Server: <code>1.22.6+k3s1</code>
-Traefik: <code>2.6.1</code>
-Traefik Helmchart: <code>10.9.100</code></p>
+<ul>
+<li>K3s: <code>v1.22.6+k3s1 (3228d9cb)</code></li>
+<li>K8s-Client: <code>1.23.3</code></li>
+<li>K8s-Server: <code>1.22.6+k3s1</code></li>
+<li>Traefik: <code>2.6.1</code></li>
+<li>Traefik Helmchart: <code>10.9.100</code></li>
+</ul>
 <h1 id="installation-k3s">Installation k3s</h1>
 <p>The installation of k3s is quite simple.
 We are following the <a href="https://rancher.com/docs/k3s/latest/en/installation/install-options/#options-for-installation-with-script">installation guide</a> of k3s documentation on rancher.com.</p>
@@ -266,25 +308,55 @@ To change the certificate to a trusted on change the the resolver to <code>spec.
             <i class="fa fa-tags"></i>
             <div class="links">
                 
-                    <a href="/tags/itarchiv">itarchiv</a>
+                    
+                    
+                    <a href="https://blog.task.media/tags/itarchiv/">itarchiv</a>
+                    
                 
-                    <a href="/tags/k3s">k3s</a>
+                    
+                    
+                    <a href="https://blog.task.media/tags/k3s/">k3s</a>
+                    
                 
-                    <a href="/tags/k8s">k8s</a>
+                    
+                    
+                    <a href="https://blog.task.media/tags/k8s/">k8s</a>
+                    
                 
-                    <a href="/tags/kubernetes">kubernetes</a>
+                    
+                    
+                    <a href="https://blog.task.media/tags/kubernetes/">kubernetes</a>
+                    
                 
-                    <a href="/tags/traefik">traefik</a>
+                    
+                    
+                    <a href="https://blog.task.media/tags/traefik/">traefik</a>
+                    
                 
-                    <a href="/tags/dashboard">dashboard</a>
+                    
+                    
+                    <a href="https://blog.task.media/tags/dashboard/">dashboard</a>
+                    
                 
-                    <a href="/tags/reverseproxy">reverseproxy</a>
+                    
+                    
+                    <a href="https://blog.task.media/tags/reverseproxy/">reverseproxy</a>
+                    
                 
-                    <a href="/tags/proxy">proxy</a>
+                    
+                    
+                    <a href="https://blog.task.media/tags/proxy/">proxy</a>
+                    
                 
-                    <a href="/tags/ingress">ingress</a>
+                    
+                    
+                    <a href="https://blog.task.media/tags/ingress/">ingress</a>
+                    
                 
-                    <a href="/tags/ingressroute">ingressroute</a>
+                    
+                    
+                    <a href="https://blog.task.media/tags/ingressroute/">ingressroute</a>
+                    
                 
             </div>
         </div>
@@ -307,7 +379,15 @@ To change the certificate to a trusted on change the the resolver to <code>spec.
     </div>
 
     
-        
+        <div id="comments-container">
+            
+            
+
+            
+
+            
+
+        </div>
     
 
     
@@ -324,16 +404,17 @@ To change the certificate to a trusted on change the the resolver to <code>spec.
 
      
 
-        </div>
+    </div>
 
-        
+    
 <footer>
     <div class="container">
 
         
         <div class="recent-posts">
             <strong>Neuste Beiträge</strong>
-                <ul>
+            <ul>
+                
                 
                     <li>
                         <a href="https://blog.task.media/article/k3s/k3s-letsencrypt-traefik/">Setup k3s with LetsEncrypt and Traefik dashboard exposed</a>
@@ -343,7 +424,7 @@ To change the certificate to a trusted on change the the resolver to <code>spec.
                         <a href="https://blog.task.media/article/welcome-back/">Welcome back</a>
                     </li>
                 
-                </ul>
+            </ul>
         </div>
         
 
@@ -355,25 +436,15 @@ To change the certificate to a trusted on change the the resolver to <code>spec.
                 <strong>Social media</strong>
 
                 
-                
-                    <a href="https://twitter.com/taskmediaDE" target="_blank"><i class="fa fa-twitter-adblock-proof"></i></a>
-                
-                
-                
-                
-                
-                
-                
-                    <a href="https://youtube.com/c/taskmedia" target="_blank"><i class="fa fa-youtube-adblock-proof"></i></a>
-                
-                
-                
-                    <a href="https://github.com/taskmedia" target="_blank"><i class="fa fa-github"></i></a>
-                
-                
             </div>
             
 
+            
+
+            
+            <div class="archive">
+                <a href="/archive/"><strong>Archiv</strong></a>
+            </div>
             
         </div>
     </div>
@@ -386,47 +457,30 @@ To change the certificate to a trusted on change the the resolver to <code>spec.
             <a href="https://task.media/" target="_blank">
                 &copy;
                 
-                    2022
+                2022
                 
                 task.media
             </a>
-	    
+            
         </div>
         <div class="author">
-            <a href="https://github.com/Lednerb/bilberry-hugo-theme" target="_blank">Bilberry Hugo Theme</a>
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme"
+                target="_blank">Bilberry Hugo Theme</a>
         </div>
     </div>
 </div>
 
 
-        
+    
 
-        
-
-        
-        
-        <script type="text/javascript" src="/js/externalDependencies.39c47e10e241eae2947b3fe21809c572.js" integrity="md5-OcR&#43;EOJB6uKUez/iGAnFcg=="></script>
-
-        
-        
-        <script type="text/javascript" src="/js/theme.ff50ae6dc1bfc220b23bf69dbb41b54e.js" integrity="md5-/1CubcG/wiCyO/adu0G1Tg=="></script>
-
-        <script>
-            $(".moment").each(function() {
-                $(this).text(
-                    moment( $(this).text() )
-                        .locale( "de" )
-                        .format('LL')
-                );
-            });
-
-            $(".footnote-return sup").html("");
-        </script>
-
-        
-
-        
+    
 
 
-    </body>
+    <script type="text/javascript" src="https://blog.task.media/theme.js"></script>
+
+    
+
+    
+</body>
+
 </html>

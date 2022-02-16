@@ -11,12 +11,25 @@
     
     
     <item>
-      <title>Articles</title>
-      <link>https://blog.task.media/article/</link>
+      <title>Setup k3s with LetsEncrypt and Traefik dashboard exposed</title>
+      <link>https://blog.task.media/article/k3s/k3s-letsencrypt-traefik/</link>
       <pubDate>Wed, 16 Feb 2022 12:00:00 +0100</pubDate>
       
-      <guid>https://blog.task.media/article/</guid>
-      <description></description>
+      <guid>https://blog.task.media/article/k3s/k3s-letsencrypt-traefik/</guid>
+      <description>About This article describes how to expose a Kubernetes instance running with k3s with TLS certificates from Let’s Encrypt.
+The K3s installation will install a Traefik ingress on its default configuration. But it will not have a certificate resolver present and uses the Traefik default certificate.
+Versions  K3s: v1.22.6+k3s1 (3228d9cb) K8s-Client: 1.23.3 K8s-Server: 1.22.6+k3s1 Traefik: 2.6.1 Traefik Helmchart: 10.9.100  Installation k3s The installation of k3s is quite simple. We are following the installation guide of k3s documentation on rancher.</description>
+    </item>
+    
+    <item>
+      <title>Welcome back</title>
+      <link>https://blog.task.media/article/welcome-back/</link>
+      <pubDate>Tue, 16 Jul 2019 18:53:55 +0200</pubDate>
+      
+      <guid>https://blog.task.media/article/welcome-back/</guid>
+      <description>Nachdem die Website it-archiv.net in letzter Zeit nicht mehr aktiv genutzt wurde um Beiträge zu veröffentlichen, wird mit diesem Blog diese Idee fortgesetzt. Gesetzt wird wie auch schon zuvor auf Themen rund um die IT mit der Absicht eine hohe Qualität abzuliefern.
+In der Kombination mit Videos (YouTube) sollen die Beiträge interaktiv gestaltet werden.
+Fehler sind menschlich und sollten hier einfach behoben werden können. Aus diesem Grund wird die Homepage mit Hugo realisiert und auf github.</description>
     </item>
     
   </channel>
