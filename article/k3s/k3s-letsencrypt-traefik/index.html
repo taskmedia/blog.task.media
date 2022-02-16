@@ -135,7 +135,7 @@
 
         
             
-                <span class="readingTime">4 Min. lesen</span>
+                <span class="readingTime">5 Min. lesen</span>
             
         
 
@@ -298,6 +298,21 @@ Replace <code>traefik.example.org</code> with your domain.</p>
 </code></pre><p>As described in the yaml the certificate will not be trusted by your browser because currently the Let&rsquo;s Encrypt staging resolver is used.
 This occurs in a <code>Your connection is not private: ERR_CERT_AUTHORITY_INVALID</code> error on your browser.
 To change the certificate to a trusted on change the the resolver to <code>spec.tls.certResolver: le-prod</code>.</p>
+<h1 id="known-issues">Known issues</h1>
+<h2 id="timeout-during-connect">Timeout during connect</h2>
+<p>If a IngressRoute is already present when Traefik itself is not yet available the following error could occur:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl logs  -n kube-system traefik-5c7b868c6-k4m2r
+time<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;2022-02-16T18:01:15Z&#34;</span> level<span style="color:#f92672">=</span>info msg<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Configuration loaded from flags.&#34;</span>
+time<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;2022-02-16T18:01:39Z&#34;</span> level<span style="color:#f92672">=</span>error msg<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Unable to obtain ACME certificate for domains \&#34;traefik.example.org\&#34;: unable to generate a certificate for the domains [traefik.example.org]: error: one or more domains had a problem:\n[traefik.example.org] acme: error: 400 :: urn:ietf:params:acme:error:connection :: Timeout during connect (likely firewall problem)\n&#34;</span> ACME CA<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://acme-staging-v02.api.letsencrypt.org/directory&#34;</span> routerName<span style="color:#f92672">=</span>hidden@kubernetescrd rule<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Host(`traefik.example.org`)&#34;</span> providerName<span style="color:#f92672">=</span>le-staging.acme
+</code></pre></div><p>If an Ingress(Route) is already defined prior to fully existence of the Traefik pod the HTTP challenge might will fail.
+This problem could occur due the fact that the old Traefik pod (shortly before its termination) will receive the response from service instead of the new pod.
+Due the fact that no response will return to the newly created pod will timeout.</p>
+<p>This issue is also related to the <code>certificate store</code> issue above.</p>
+<h2 id="certificate-store">Certificate store</h2>
+<p>In the current configuration the certificate store (<code>/data/acme.json</code> inside the pod) will be lost if the pod will be recreated.
+All issued certificates will then be lost.</p>
+<p>The certificate store would have to be outsourced in e.g. a Kubernetes Secret.</p>
+<p>Have a look at <a href="https://cert-manager.io/docs/">cert-manager</a> - this will also allow you to scale Traefik with multiple replicas.</p>
 
     
 </div>
