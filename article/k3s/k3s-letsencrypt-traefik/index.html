@@ -10,7 +10,7 @@
     <meta name="author" content="Marco">
     <meta name="description" content="Blog über IT-Themen aus dem Alltag und Vorlesungen.">
     <meta name="keywords" content="blog,it,taskmedia,task.media,it-archiv,itarchiv">
-    <meta name="generator" content="Hugo 0.92.1" />
+    <meta name="generator" content="Hugo 0.111.3">
     <title>
         
            
@@ -169,14 +169,14 @@ But it will not have a certificate resolver present and uses the Traefik default
 <h1 id="installation-k3s">Installation k3s</h1>
 <p>The installation of k3s is quite simple.
 We are following the <a href="https://rancher.com/docs/k3s/latest/en/installation/install-options/#options-for-installation-with-script">installation guide</a> of k3s documentation on rancher.com.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Set hostname as node name</span>
-$ export K3S_NODE_NAME<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>hostname -f<span style="color:#66d9ef">)</span>
-
-<span style="color:#75715e"># start installation</span>
-$ curl -sfL https://get.k3s.io | sh -
-</code></pre></div><p>After the installation the Kubernetes configuration file of ranger can be copied from k3s.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cp /etc/rancher/k3s/k3s.yaml /root/.kube/config
-</code></pre></div><h1 id="configure-k3s-traefik-ingress">Configure k3s Traefik ingress</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Set hostname as node name</span>
+</span></span><span style="display:flex;"><span>$ export K3S_NODE_NAME<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>hostname -f<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># start installation</span>
+</span></span><span style="display:flex;"><span>$ curl -sfL https://get.k3s.io | sh -
+</span></span></code></pre></div><p>After the installation the Kubernetes configuration file of ranger can be copied from k3s.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cp /etc/rancher/k3s/k3s.yaml /root/.kube/config
+</span></span></code></pre></div><h1 id="configure-k3s-traefik-ingress">Configure k3s Traefik ingress</h1>
 <p>To use the preinstalled ingress with certificates you need to add some additional configuration to your Traefik.
 You will find the deployment <a href="https://helm.sh/">Helm</a> configuration here: <code>/var/lib/rancher/k3s/server/manifests/traefik.yaml</code>.
 Keep in mind not to change this configuration file because it might be overwritten by k3s later (e.g. on upgrade).</p>
@@ -198,71 +198,71 @@ This file can be found on the mentioned path above on your server (<code>/var/li
 <p>I added my custom configuration on top of the copied on from the existing manifest (separated by a comment).</p>
 <p>Place the configuration at <code>/var/lib/rancher/k3s/server/manifests/traefik-config.yaml</code>.</p>
 <h2 id="modified-traefik-configuration">Modified Traefik configuration</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># traefik-config.yaml</span>
-<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">helm.cattle.io/v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">HelmChartConfig</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">traefik</span>
-  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">kube-system</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">valuesContent</span>: |-<span style="color:#e6db74">
-</span><span style="color:#e6db74">    image:
-</span><span style="color:#e6db74">      name: traefik
-</span><span style="color:#e6db74">      tag: v2.6.1
-</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">    globalArguments:
-</span><span style="color:#e6db74">      - &#34;--global.checknewversion=false&#34;
-</span><span style="color:#e6db74">      - &#34;--global.sendanonymoususage=false&#34;
-</span><span style="color:#e6db74">      - &#34;--api.insecure=true&#34;
-</span><span style="color:#e6db74">      - &#34;--certificatesresolvers.le-staging.acme.tlschallenge&#34;
-</span><span style="color:#e6db74">      - &#34;--certificatesresolvers.le-staging.acme.email=mail@task.media&#34;
-</span><span style="color:#e6db74">      - &#34;--certificatesresolvers.le-staging.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory&#34;
-</span><span style="color:#e6db74">      - &#34;--certificatesresolvers.le-staging.acme.storage=/data/acme.json&#34;
-</span><span style="color:#e6db74">      - &#34;--certificatesresolvers.le-prod.acme.tlschallenge&#34;
-</span><span style="color:#e6db74">      - &#34;--certificatesresolvers.le-prod.acme.email=mail@task.media&#34;
-</span><span style="color:#e6db74">      - &#34;--certificatesresolvers.le-prod.acme.caserver=https://acme-v02.api.letsencrypt.org/directory&#34;
-</span><span style="color:#e6db74">      - &#34;--certificatesresolvers.le-prod.acme.storage=/data/acme.json&#34;
-</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">    # ---- k3s Traefik default configuration below ----
-</span><span style="color:#e6db74">    rbac:
-</span><span style="color:#e6db74">      enabled: true
-</span><span style="color:#e6db74">    ports:
-</span><span style="color:#e6db74">      websecure:
-</span><span style="color:#e6db74">        tls:
-</span><span style="color:#e6db74">          enabled: true
-</span><span style="color:#e6db74">    podAnnotations:
-</span><span style="color:#e6db74">      prometheus.io/port: &#34;8082&#34;
-</span><span style="color:#e6db74">      prometheus.io/scrape: &#34;true&#34;
-</span><span style="color:#e6db74">    providers:
-</span><span style="color:#e6db74">      kubernetesIngress:
-</span><span style="color:#e6db74">        publishedService:
-</span><span style="color:#e6db74">          enabled: true
-</span><span style="color:#e6db74">    priorityClassName: &#34;system-cluster-critical&#34;
-</span><span style="color:#e6db74">    tolerations:
-</span><span style="color:#e6db74">    - key: &#34;CriticalAddonsOnly&#34;
-</span><span style="color:#e6db74">      operator: &#34;Exists&#34;
-</span><span style="color:#e6db74">    - key: &#34;node-role.kubernetes.io/control-plane&#34;
-</span><span style="color:#e6db74">      operator: &#34;Exists&#34;
-</span><span style="color:#e6db74">      effect: &#34;NoSchedule&#34;
-</span><span style="color:#e6db74">    - key: &#34;node-role.kubernetes.io/master&#34;
-</span><span style="color:#e6db74">      operator: &#34;Exists&#34;
-</span><span style="color:#e6db74">      effect: &#34;NoSchedule&#34;</span>    
-</code></pre></div><p>Important is also to remove duplicate entries - e.g. on the default k3s configuration I had to remove <code>image.name</code>.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># traefik-config.yaml</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">helm.cattle.io/v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">HelmChartConfig</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">traefik</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">kube-system</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">valuesContent</span>: |-<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    image:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      name: traefik
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      tag: v2.6.1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    globalArguments:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - &#34;--global.checknewversion=false&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - &#34;--global.sendanonymoususage=false&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - &#34;--api.insecure=true&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - &#34;--certificatesresolvers.le-staging.acme.tlschallenge&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - &#34;--certificatesresolvers.le-staging.acme.email=mail@task.media&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - &#34;--certificatesresolvers.le-staging.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - &#34;--certificatesresolvers.le-staging.acme.storage=/data/acme.json&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - &#34;--certificatesresolvers.le-prod.acme.tlschallenge&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - &#34;--certificatesresolvers.le-prod.acme.email=mail@task.media&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - &#34;--certificatesresolvers.le-prod.acme.caserver=https://acme-v02.api.letsencrypt.org/directory&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      - &#34;--certificatesresolvers.le-prod.acme.storage=/data/acme.json&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    # ---- k3s Traefik default configuration below ----
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    rbac:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      enabled: true
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    ports:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      websecure:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        tls:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          enabled: true
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    podAnnotations:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      prometheus.io/port: &#34;8082&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      prometheus.io/scrape: &#34;true&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    providers:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      kubernetesIngress:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        publishedService:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          enabled: true
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    priorityClassName: &#34;system-cluster-critical&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    tolerations:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    - key: &#34;CriticalAddonsOnly&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      operator: &#34;Exists&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    - key: &#34;node-role.kubernetes.io/control-plane&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      operator: &#34;Exists&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      effect: &#34;NoSchedule&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    - key: &#34;node-role.kubernetes.io/master&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      operator: &#34;Exists&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      effect: &#34;NoSchedule&#34;</span>    
+</span></span></code></pre></div><p>Important is also to remove duplicate entries - e.g. on the default k3s configuration I had to remove <code>image.name</code>.
 Otherwise your changes will not be reflected.</p>
 <h2 id="deployment-modified-traefik-ingress">Deployment modified Traefik ingress</h2>
 <p>To deploy the modified ingress you do not need to deploy the yaml-file yourself.
 K3s will keep track of the directory where the file was placed and run Helm to deploy changes.</p>
 <p>To verify if the changes are inherited have a look at the pods in namespace <code>kube-system</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pod -n kube-system
-NAME                                      READY   STATUS      RESTARTS   AGE
-local-path-provisioner-84bb864455-hzk75   1/1     Running     <span style="color:#ae81ff">0</span>          4m53s
-coredns-96cc4f57d-cg59b                   1/1     Running     <span style="color:#ae81ff">0</span>          4m53s
-helm-install-traefik-crd--1-24p6k         0/1     Completed   <span style="color:#ae81ff">0</span>          4m54s
-metrics-server-ff9dbcb6c-bwcv2            1/1     Running     <span style="color:#ae81ff">0</span>          4m53s
-svclb-traefik-2qxsw                       2/2     Running     <span style="color:#ae81ff">0</span>          4m33s
-helm-install-traefik--1-pw4cs             0/1     Completed   <span style="color:#ae81ff">0</span>          32s
-traefik-968cf9598-6qxtm                   1/1     Running     <span style="color:#ae81ff">0</span>          30s
-</code></pre></div><p>You can see the <code>helm-install-traefik-*</code> pod was completed 30 seconds ago.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ kubectl get pod -n kube-system
+</span></span><span style="display:flex;"><span>NAME                                      READY   STATUS      RESTARTS   AGE
+</span></span><span style="display:flex;"><span>local-path-provisioner-84bb864455-hzk75   1/1     Running     <span style="color:#ae81ff">0</span>          4m53s
+</span></span><span style="display:flex;"><span>coredns-96cc4f57d-cg59b                   1/1     Running     <span style="color:#ae81ff">0</span>          4m53s
+</span></span><span style="display:flex;"><span>helm-install-traefik-crd--1-24p6k         0/1     Completed   <span style="color:#ae81ff">0</span>          4m54s
+</span></span><span style="display:flex;"><span>metrics-server-ff9dbcb6c-bwcv2            1/1     Running     <span style="color:#ae81ff">0</span>          4m53s
+</span></span><span style="display:flex;"><span>svclb-traefik-2qxsw                       2/2     Running     <span style="color:#ae81ff">0</span>          4m33s
+</span></span><span style="display:flex;"><span>helm-install-traefik--1-pw4cs             0/1     Completed   <span style="color:#ae81ff">0</span>          32s
+</span></span><span style="display:flex;"><span>traefik-968cf9598-6qxtm                   1/1     Running     <span style="color:#ae81ff">0</span>          30s
+</span></span></code></pre></div><p>You can see the <code>helm-install-traefik-*</code> pod was completed 30 seconds ago.
 This pod deployed the changes from the added HelmChartConfig.</p>
 <p>This resulted in a updated <code>traefik-*</code> pod with updated configuration.
 To check the configuration you can view the pod: <code>kubectl get pod traefik-968cf9598-6qxtm -o yaml</code> and search for e.g. the args of the container or the used image.</p>
@@ -270,30 +270,30 @@ To check the configuration you can view the pod: <code>kubectl get pod traefik-9
 <p>To check your configuration we now will expose the Traefik dashboard.
 Keep in mind that it is not recommended to publish the Traefik dashboard to the public (especially not unprotected).</p>
 <p>We will use the <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">Custom Resource</a> <a href="https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-ingressroute">IngressRoute</a> (CRD from Traefik) to expose the dashboard to a public domain.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># ingress-traefik-dashboard-public.yaml</span>
-<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">traefik.containo.us/v1alpha1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">IngressRoute</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">traefik-dashboard-public</span>
-  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">kube-system</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">entryPoints</span>:
-    - <span style="color:#ae81ff">websecure</span>
-  <span style="color:#f92672">routes</span>:
-    - <span style="color:#f92672">match</span>: <span style="color:#ae81ff">Host(`traefik.example.org`) &amp;&amp; (PathPrefix(`/dashboard`) || PathPrefix(`/api`))</span>
-      <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Rule</span>
-      <span style="color:#f92672">services</span>:
-        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">api@internal</span>
-          <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">TraefikService</span>
-  <span style="color:#f92672">tls</span>:
-    <span style="color:#75715e"># use staging certificates</span>
-    <span style="color:#75715e"># keep in mind you will get a TLS warning by your browser when using staging!</span>
-    <span style="color:#f92672">certResolver</span>: <span style="color:#ae81ff">le-staging</span>
-</code></pre></div><p>This file should not be saved in the same location as the <code>traefik-config.yml</code>.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># ingress-traefik-dashboard-public.yaml</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">traefik.containo.us/v1alpha1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">IngressRoute</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">traefik-dashboard-public</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">kube-system</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">entryPoints</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">websecure</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">routes</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">match</span>: <span style="color:#ae81ff">Host(`traefik.example.org`) &amp;&amp; (PathPrefix(`/dashboard`) || PathPrefix(`/api`))</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Rule</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">api@internal</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">TraefikService</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">tls</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># use staging certificates</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># keep in mind you will get a TLS warning by your browser when using staging!</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">certResolver</span>: <span style="color:#ae81ff">le-staging</span>
+</span></span></code></pre></div><p>This file should not be saved in the same location as the <code>traefik-config.yml</code>.
 Replace <code>traefik.example.org</code> with your domain.</p>
 <p>To deploy this IngressRoute apply the configuration with following command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl apply -f ./ingress-traefik-dashboard-public.yaml
-</code></pre></div><p>After a successful deployment the traefik dashboard should be exposed at the defined domain:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubectl apply -f ./ingress-traefik-dashboard-public.yaml
+</span></span></code></pre></div><p>After a successful deployment the traefik dashboard should be exposed at the defined domain:</p>
 <pre tabindex="0"><code>https://traefik.example.org/dashboard/
 </code></pre><p>As described in the yaml the certificate will not be trusted by your browser because currently the Let&rsquo;s Encrypt staging resolver is used.
 This occurs in a <code>Your connection is not private: ERR_CERT_AUTHORITY_INVALID</code> error on your browser.
@@ -301,10 +301,10 @@ To change the certificate to a trusted on change the the resolver to <code>spec.
 <h1 id="known-issues">Known issues</h1>
 <h2 id="timeout-during-connect">Timeout during connect</h2>
 <p>If a IngressRoute is already present when Traefik itself is not yet available the following error could occur:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl logs  -n kube-system traefik-5c7b868c6-k4m2r
-time<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;2022-02-16T18:01:15Z&#34;</span> level<span style="color:#f92672">=</span>info msg<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Configuration loaded from flags.&#34;</span>
-time<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;2022-02-16T18:01:39Z&#34;</span> level<span style="color:#f92672">=</span>error msg<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Unable to obtain ACME certificate for domains \&#34;traefik.example.org\&#34;: unable to generate a certificate for the domains [traefik.example.org]: error: one or more domains had a problem:\n[traefik.example.org] acme: error: 400 :: urn:ietf:params:acme:error:connection :: Timeout during connect (likely firewall problem)\n&#34;</span> ACME CA<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://acme-staging-v02.api.letsencrypt.org/directory&#34;</span> routerName<span style="color:#f92672">=</span>hidden@kubernetescrd rule<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Host(`traefik.example.org`)&#34;</span> providerName<span style="color:#f92672">=</span>le-staging.acme
-</code></pre></div><p>If an Ingress(Route) is already defined prior to fully existence of the Traefik pod the HTTP challenge might will fail.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ kubectl logs  -n kube-system traefik-5c7b868c6-k4m2r
+</span></span><span style="display:flex;"><span>time<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;2022-02-16T18:01:15Z&#34;</span> level<span style="color:#f92672">=</span>info msg<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Configuration loaded from flags.&#34;</span>
+</span></span><span style="display:flex;"><span>time<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;2022-02-16T18:01:39Z&#34;</span> level<span style="color:#f92672">=</span>error msg<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Unable to obtain ACME certificate for domains \&#34;traefik.example.org\&#34;: unable to generate a certificate for the domains [traefik.example.org]: error: one or more domains had a problem:\n[traefik.example.org] acme: error: 400 :: urn:ietf:params:acme:error:connection :: Timeout during connect (likely firewall problem)\n&#34;</span> ACME CA<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://acme-staging-v02.api.letsencrypt.org/directory&#34;</span> routerName<span style="color:#f92672">=</span>hidden@kubernetescrd rule<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Host(`traefik.example.org`)&#34;</span> providerName<span style="color:#f92672">=</span>le-staging.acme
+</span></span></code></pre></div><p>If an Ingress(Route) is already defined prior to fully existence of the Traefik pod the HTTP challenge might will fail.
 This problem could occur due the fact that the old Traefik pod (shortly before its termination) will receive the response from service instead of the new pod.
 Due the fact that no response will return to the newly created pod will timeout.</p>
 <p>This issue is also related to the <code>certificate store</code> issue above.</p>
@@ -430,6 +430,10 @@ All issued certificates will then be lost.</p>
                 
                 
                     <li>
+                        <a href="https://blog.task.media/article/rpi/rpi-ap-dns/">Control RPi GPIO throught standalone and offline WiFi (access point)</a>
+                    </li>
+                
+                    <li>
                         <a href="https://blog.task.media/article/k3s/k3s-letsencrypt-traefik/">Setup k3s with LetsEncrypt and Traefik dashboard exposed</a>
                     </li>
                 
@@ -470,7 +474,7 @@ All issued certificates will then be lost.</p>
             <a href="https://task.media/" target="_blank">
                 &copy;
                 
-                2022
+                2023
                 
                 task.media
             </a>

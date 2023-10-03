@@ -10,7 +10,7 @@
     <meta name="author" content="Marco">
     <meta name="description" content="Blog über IT-Themen aus dem Alltag und Vorlesungen.">
     <meta name="keywords" content="blog,it,taskmedia,task.media,it-archiv,itarchiv">
-    <meta name="generator" content="Hugo 0.92.1" />
+    <meta name="generator" content="Hugo 0.111.3">
     <title>
         
            
@@ -129,6 +129,130 @@
         
     <div class="article-wrapper u-cf">
         
+            <a class="bubble" href="https://blog.task.media/article/rpi/rpi-ap-dns/">
+    <i class="fas fa-fw fa-sticky-note"></i>
+</a>
+
+<article class="default article">
+    
+
+    <div class="content">
+    <h1 class="article-title">
+        <a href="https://blog.task.media/article/rpi/rpi-ap-dns/">
+            Control RPi GPIO throught standalone and offline WiFi (access point)
+        </a>
+    </h1>
+
+    <div class="meta">
+        
+            
+                <span class="date moment">2023-10-03</span>
+            
+        
+
+        
+            
+                <span class="readingTime">6 Min. lesen</span>
+            
+        
+
+        
+
+        
+            <span class="author">
+                
+                
+                    <a href="https://blog.task.media/author/marco/">Marco</a>
+                
+            </span>
+        
+    </div>
+
+    
+        Background Currently I have a servo connected to my RPi which should be controlled via Smartphone. The easiest way for sure is just connect the Raspberry Pi with your home network and connect via IP address given to the RPi from your DHCP.
+But in my setup this Raspberry is not always connected to the network and should be independently controllable. Therefore I needed to go for another solution.
+TL;DR I created an access point on the RPi and forwarded all traffic to the local web server.
+
+        
+            <a href="https://blog.task.media/article/rpi/rpi-ap-dns/" class="more">Weiterlesen</a>
+        
+    
+</div>
+
+    
+<div class="footer">
+
+
+    
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                    
+                    
+                    <a href="https://blog.task.media/tags/raspberry-pi/">raspberry pi</a>
+                    
+                
+                    
+                    
+                    <a href="https://blog.task.media/tags/rpi/">rpi</a>
+                    
+                
+                    
+                    
+                    <a href="https://blog.task.media/tags/access-point/">access point</a>
+                    
+                
+                    
+                    
+                    <a href="https://blog.task.media/tags/wifi/">wifi</a>
+                    
+                
+                    
+                    
+                    <a href="https://blog.task.media/tags/wlan/">wlan</a>
+                    
+                
+                    
+                    
+                    <a href="https://blog.task.media/tags/dns/">dns</a>
+                    
+                
+                    
+                    
+                    <a href="https://blog.task.media/tags/python/">python</a>
+                    
+                
+                    
+                    
+                    <a href="https://blog.task.media/tags/raspap/">RaspAp</a>
+                    
+                
+            </div>
+        </div>
+    
+
+    
+    
+    <div class="edit">
+      <a href="https://github.com/taskmedia/blog/edit/master/content/article/rpi/rpi-ap-dns/index.md">
+        <i class="fa fa-edit"></i>
+        <div class="links">Edit</div>
+      </a>
+    </div>
+    
+</div>
+
+</article>
+
+        
+    </div>
+
+
+    
+        
+    <div class="article-wrapper u-cf">
+        
             <a class="bubble" href="https://blog.task.media/article/k3s/k3s-letsencrypt-traefik/">
     <i class="fas fa-fw fa-sticky-note"></i>
 </a>
@@ -171,7 +295,7 @@
     
         About This article describes how to expose a Kubernetes instance running with k3s with TLS certificates from Let’s Encrypt.
 The K3s installation will install a Traefik ingress on its default configuration. But it will not have a certificate resolver present and uses the Traefik default certificate.
-Versions  K3s: v1.22.6+k3s1 (3228d9cb) K8s-Client: 1.23.3 K8s-Server: 1.22.6+k3s1 Traefik: 2.6.1 Traefik Helmchart: 10.9.100  Installation k3s The installation of k3s is quite simple. We are following the installation guide of k3s documentation on rancher.
+Versions K3s: v1.22.6+k3s1 (3228d9cb) K8s-Client: 1.23.3 K8s-Server: 1.22.6+k3s1 Traefik: 2.6.1 Traefik Helmchart: 10.9.100 Installation k3s The installation of k3s is quite simple. We are following the installation guide of k3s documentation on rancher.
 
         
             <a href="https://blog.task.media/article/k3s/k3s-letsencrypt-traefik/" class="more">Weiterlesen</a>
@@ -367,6 +491,10 @@ Fehler sind menschlich und sollten hier einfach behoben werden können. Aus dies
                 
                 
                     <li>
+                        <a href="https://blog.task.media/article/rpi/rpi-ap-dns/">Control RPi GPIO throught standalone and offline WiFi (access point)</a>
+                    </li>
+                
+                    <li>
                         <a href="https://blog.task.media/article/k3s/k3s-letsencrypt-traefik/">Setup k3s with LetsEncrypt and Traefik dashboard exposed</a>
                     </li>
                 
@@ -407,7 +535,7 @@ Fehler sind menschlich und sollten hier einfach behoben werden können. Aus dies
             <a href="https://task.media/" target="_blank">
                 &copy;
                 
-                2022
+                2023
                 
                 task.media
             </a>

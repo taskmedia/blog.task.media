@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rpi on task.media Blog</title>
+    <link>https://blog.task.media/tags/rpi/</link>
+    <description>Recent content in rpi on task.media Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>de-DE</language>
+    <lastBuildDate>Tue, 03 Oct 2023 10:30:45 +0200</lastBuildDate><atom:link href="https://blog.task.media/tags/rpi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Control RPi GPIO throught standalone and offline WiFi (access point)</title>
+      <link>https://blog.task.media/article/rpi/rpi-ap-dns/</link>
+      <pubDate>Tue, 03 Oct 2023 10:30:45 +0200</pubDate>
+      
+      <guid>https://blog.task.media/article/rpi/rpi-ap-dns/</guid>
+      <description>Background Currently I have a servo connected to my RPi which should be controlled via Smartphone. The easiest way for sure is just connect the Raspberry Pi with your home network and connect via IP address given to the RPi from your DHCP.
+But in my setup this Raspberry is not always connected to the network and should be independently controllable. Therefore I needed to go for another solution.
+TL;DR I created an access point on the RPi and forwarded all traffic to the local web server.</description>
+    </item>
+    
+  </channel>
+</rss>
