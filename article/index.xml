@@ -13,9 +13,8 @@
       <pubDate>Tue, 03 Oct 2023 10:30:45 +0200</pubDate>
       
       <guid>https://blog.task.media/article/rpi/rpi-ap-dns/</guid>
-      <description>Background Currently I have a servo connected to my RPi which should be controlled via Smartphone. The easiest way for sure is just connect the Raspberry Pi with your home network and connect via IP address given to the RPi from your DHCP.
-But in my setup this Raspberry is not always connected to the network and should be independently controllable. Therefore I needed to go for another solution.
-TL;DR I created an access point on the RPi and forwarded all traffic to the local web server.</description>
+      <description>TL;DR I created an access point on the RPi and forwarded all traffic to the local web server. The redirect is done by providing a custom DNS which redirects all traffic to itself. On the website you can control the servo connected to the GPIO pins via python.
+Background Currently I have a servo connected to my RPi which should be controlled via smartphone. For sure the easiest way is just connect the Raspberry Pi with your home network and connect via IP address given from your DHCP to the RPi.</description>
     </item>
     
     <item>

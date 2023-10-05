@@ -14,17 +14,17 @@
     <title>
         
            
-               Tags &vert; task.media Blog
+               playmobile &vert; task.media Blog
            
         
     </title>
-    <meta name="description" content="Tags - Blog über IT-Themen aus dem Alltag und Vorlesungen.">
-    <meta itemprop="name" content="Tags">
-    <meta itemprop="description" content="Tags - Blog über IT-Themen aus dem Alltag und Vorlesungen.">
-    <meta property="og:title" content="Tags">
-    <meta property="og:description" content="Tags - Blog über IT-Themen aus dem Alltag und Vorlesungen.">
+    <meta name="description" content="playmobile - Blog über IT-Themen aus dem Alltag und Vorlesungen.">
+    <meta itemprop="name" content="playmobile">
+    <meta itemprop="description" content="playmobile - Blog über IT-Themen aus dem Alltag und Vorlesungen.">
+    <meta property="og:title" content="playmobile">
+    <meta property="og:description" content="playmobile - Blog über IT-Themen aus dem Alltag und Vorlesungen.">
     <meta property="og:image" content="https://www.gravatar.com/avatar/73d3dcc1a6538a364a5112d218ad4f43?size=200">
-    <meta property="og:url" content="https://blog.task.media/tags/">
+    <meta property="og:url" content="https://blog.task.media/tags/playmobile/">
     <meta property="og:site_name" content="task.media Blog"><meta property="og:type" content="website">
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -38,12 +38,12 @@
     <script src="/modernizr-simple.js"></script>
 
     
-    <link href="/tags/" rel="alternate" type="application/rss+xml" title="task.media Blog" />
-    <link href="/tags/" rel="feed" type="application/rss+xml" title="task.media Blog" />
+    <link href="/tags/playmobile/" rel="alternate" type="application/rss+xml" title="task.media Blog" />
+    <link href="/tags/playmobile/" rel="feed" type="application/rss+xml" title="task.media Blog" />
     
 
     
-    <link rel="canonical" href="https://blog.task.media/tags/">
+    <link rel="canonical" href="https://blog.task.media/tags/playmobile/">
     
 
     <link rel="stylesheet" href="https://blog.task.media/theme.css">
@@ -109,68 +109,157 @@
 
     <div class="main container">
         
+    
+    
+        <div class="article-wrapper u-cf">
+            
+                <a class="bubble" href="https://blog.task.media/article/rpi/rpi-ap-dns/">
+    <i class="fas fa-fw fa-sticky-note"></i>
+</a>
 
-<div class="content">
-    <div class="article-wrapper u-cf single">
-        <a class="bubble" href="/tags/">
-            <i class="fa fa-fw fa-tag"></i>
+<article class="default article">
+    
+
+    <div class="content">
+    <h1 class="article-title">
+        <a href="https://blog.task.media/article/rpi/rpi-ap-dns/">
+            Control RPi GPIO throught standalone and offline WiFi (access point)
         </a>
+    </h1>
 
-        <article class="article">
-            <div class="content">
-                <h3>Tags</h3>
-                <hr>
-                <ul id="all-categories">
-                    
-                        <li><a href="/tags/access-point">access-point (1)</a></li>
-                    
-                        <li><a href="/tags/cable-car">cable-car (1)</a></li>
-                    
-                        <li><a href="/tags/dashboard">dashboard (1)</a></li>
-                    
-                        <li><a href="/tags/dns">dns (1)</a></li>
-                    
-                        <li><a href="/tags/gpio">gpio (1)</a></li>
-                    
-                        <li><a href="/tags/ingress">ingress (1)</a></li>
-                    
-                        <li><a href="/tags/ingressroute">ingressroute (1)</a></li>
-                    
-                        <li><a href="/tags/itarchiv">itarchiv (1)</a></li>
-                    
-                        <li><a href="/tags/k3s">k3s (1)</a></li>
-                    
-                        <li><a href="/tags/k8s">k8s (1)</a></li>
-                    
-                        <li><a href="/tags/kubernetes">kubernetes (1)</a></li>
-                    
-                        <li><a href="/tags/playmobile">playmobile (1)</a></li>
-                    
-                        <li><a href="/tags/proxy">proxy (1)</a></li>
-                    
-                        <li><a href="/tags/python">python (1)</a></li>
-                    
-                        <li><a href="/tags/raspap">raspap (1)</a></li>
-                    
-                        <li><a href="/tags/raspberry-pi">raspberry-pi (1)</a></li>
-                    
-                        <li><a href="/tags/reverseproxy">reverseproxy (1)</a></li>
-                    
-                        <li><a href="/tags/rpi">rpi (1)</a></li>
-                    
-                        <li><a href="/tags/servo">servo (1)</a></li>
-                    
-                        <li><a href="/tags/traefik">traefik (1)</a></li>
-                    
-                        <li><a href="/tags/wifi">wifi (1)</a></li>
-                    
-                        <li><a href="/tags/wlan">wlan (1)</a></li>
-                    
-                </ul>
-            </div>
-        </article>
+    <div class="meta">
+        
+            
+                <span class="date moment">2023-10-03</span>
+            
+        
+
+        
+            
+                <span class="readingTime">10 Min. lesen</span>
+            
+        
+
+        
+
+        
+            <span class="author">
+                
+                
+                    <a href="https://blog.task.media/author/marco/">Marco</a>
+                
+            </span>
+        
     </div>
+
+    
+        TL;DR I created an access point on the RPi and forwarded all traffic to the local web server. The redirect is done by providing a custom DNS which redirects all traffic to itself. On the website you can control the servo connected to the GPIO pins via python.
+Background Currently I have a servo connected to my RPi which should be controlled via smartphone. For sure the easiest way is just connect the Raspberry Pi with your home network and connect via IP address given from your DHCP to the RPi.
+
+        
+            <a href="https://blog.task.media/article/rpi/rpi-ap-dns/" class="more">Weiterlesen</a>
+        
+    
 </div>
+
+    
+<div class="footer">
+
+
+    
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                    
+                    
+                    <a href="https://blog.task.media/tags/raspberry-pi/">raspberry pi</a>
+                    
+                
+                    
+                    
+                    <a href="https://blog.task.media/tags/rpi/">rpi</a>
+                    
+                
+                    
+                    
+                    <a href="https://blog.task.media/tags/access-point/">access point</a>
+                    
+                
+                    
+                    
+                    <a href="https://blog.task.media/tags/wifi/">wifi</a>
+                    
+                
+                    
+                    
+                    <a href="https://blog.task.media/tags/wlan/">wlan</a>
+                    
+                
+                    
+                    
+                    <a href="https://blog.task.media/tags/dns/">dns</a>
+                    
+                
+                    
+                    
+                    <a href="https://blog.task.media/tags/python/">python</a>
+                    
+                
+                    
+                    
+                    <a href="https://blog.task.media/tags/raspap/">RaspAp</a>
+                    
+                
+                    
+                    
+                    <a href="https://blog.task.media/tags/gpio/">GPIO</a>
+                    
+                
+                    
+                    
+                    <a href="https://blog.task.media/tags/servo/">servo</a>
+                    
+                
+                    
+                    
+                    <a href="https://blog.task.media/tags/playmobile/">playmobile</a>
+                    
+                
+                    
+                    
+                    <a href="https://blog.task.media/tags/cable-car/">cable car</a>
+                    
+                
+            </div>
+        </div>
+    
+
+    
+    
+    <div class="edit">
+      <a href="https://github.com/taskmedia/blog/edit/master/content/article/rpi/rpi-ap-dns/index.md">
+        <i class="fa fa-edit"></i>
+        <div class="links">Edit</div>
+      </a>
+    </div>
+    
+</div>
+
+</article>
+
+            
+        </div>
+    
+
+    
+    <div class="paginator">
+        
+
+        
+    </div>
+
+
 
     </div>
 
@@ -234,7 +323,7 @@
                 task.media
             </a>
             -
-            <a href="https://blog.task.media/tags/index.xml">RSS</a>
+            <a href="https://blog.task.media/tags/playmobile/index.xml">RSS</a>
         </div>
         <div class="author">
             <a href="https://github.com/Lednerb/bilberry-hugo-theme"
